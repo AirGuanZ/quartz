@@ -49,9 +49,19 @@ export class FileNode {
   depth: number
 
   constructor(slugSegment: string, displayName?: string, file?: QuartzPluginData, depth?: number) {
+    let datedTitle = ""
+    if (file?.frontmatter?.title) {
+      datedTitle = file?.frontmatter?.title
+      if (file?.frontmatter?.date) {
+        let date = file?.frontmatter?.date
+        let s = date.indexOf(".")
+        date = date.substring(s + 1)
+        datedTitle = "[" + date + "] " + datedTitle
+      }
+    }
     this.children = []
     this.name = slugSegment
-    this.displayName = displayName ?? file?.frontmatter?.title ?? slugSegment
+    this.displayName = displayName ?? datedTitle ?? slugSegment
     this.file = file ? clone(file) : null
     this.depth = depth ?? 0
   }

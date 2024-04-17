@@ -63,6 +63,12 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options> | undefined> 
               data.title = file.stem ?? i18n(cfg.configuration.locale).propertyDefaults.title
             }
 
+            if (data.date != null && data.date.toString() != "") {
+              data.date = data.date.toString()
+            } else {
+              data.date = null
+            }
+
             const tags = coerceToArray(coalesceAliases(data, ["tags", "tag"]))
             if (tags) data.tags = [...new Set(tags.map((tag: string) => slugTag(tag)))]
 
@@ -93,6 +99,7 @@ declare module "vfile" {
         lang: string
         enableToc: string
         cssclasses: string[]
+        date: string
       }>
   }
 }

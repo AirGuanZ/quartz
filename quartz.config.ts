@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🪴 Quartz 4.0",
+    pageTitle: "Automorphism",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -35,17 +35,17 @@ const config: QuartzConfig = {
           dark: "#2b2b2b",
           secondary: "#284b63",
           tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          highlight: "rgba(143, 159, 169, 0.0)", //"rgba(143, 159, 169, 0.15)",
         },
         darkMode: {
-          light: "#161618",
+          light: "#2e3744", //"#161618",
           lightgray: "#393639",
           gray: "#646464",
-          darkgray: "#d4d4d4",
+          darkgray: "#e1e1e1", //"#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
+          secondary: "#6bbfbb",
           tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          highlight: "rgba(255, 255, 255, 0.0)", //"rgba(143, 159, 169, 0.15)",
         },
       },
     },
