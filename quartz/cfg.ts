@@ -57,6 +57,8 @@ export interface GlobalConfiguration {
    * Region Codes: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
   locale: ValidLocale
+  /** Folder as home page. Specify empty string to use the root folder. */
+  homeFolder: string
 }
 
 export interface QuartzConfig {

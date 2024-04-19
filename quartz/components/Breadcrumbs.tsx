@@ -58,9 +58,12 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
     fileData,
     allFiles,
     displayClass,
+    cfg
   }: QuartzComponentProps) => {
+    let homeFolder = cfg.homeFolder
+    let isInHomeFolder = homeFolder.length > 0 && fileData.slug === homeFolder + "/index"
     // Hide crumbs on root if enabled
-    if (options.hideOnRoot && fileData.slug === "index") {
+    if (options.hideOnRoot && (fileData.slug === "index" || isInHomeFolder)) {
       return <></>
     }
 
@@ -110,6 +113,11 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
           fileData.slug!,
           (currentPath + (includeTrailingSlash ? "/" : "")) as SimpleSlug,
         )
+
+        if (homeFolder.length > 0 && currentPath === homeFolder) {
+          crumbs.length = 0
+        }
+
         crumbs.push(crumb)
       }
 

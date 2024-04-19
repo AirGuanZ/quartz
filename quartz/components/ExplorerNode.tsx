@@ -54,8 +54,9 @@ export class FileNode {
       datedTitle = file?.frontmatter?.title
       if (file?.frontmatter?.date) {
         let date = file?.frontmatter?.date
-        let s = date.indexOf(".")
-        date = date.substring(s + 1)
+        //let s = date.indexOf(".")
+        //date = date.substring(s + 1)
+        date = date.substring(2)
         datedTitle = "[" + date + "] " + datedTitle
       }
     }

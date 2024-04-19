@@ -24,8 +24,13 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
   const options: ContentMetaOptions = { ...defaultOptions, ...opts }
 
   function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
-    const text = fileData.text
+    let homeFolder = cfg.homeFolder
+    let isInHomeFolder = homeFolder.length > 0 && fileData.slug === `${homeFolder}/index`
+    if (isInHomeFolder) {
+      return null
+    }
 
+    const text = fileData.text
     if (text) {
       const segments: (string | JSX.Element)[] = []
 

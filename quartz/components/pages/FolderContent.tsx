@@ -45,11 +45,14 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         ? fileData.description
         : htmlToJsx(fileData.filePath!, tree)
 
+    let homeFolder = cfg.homeFolder
+    let isInHomeFolder = homeFolder.length > 0 && folderSlug === homeFolder
+
     return (
       <div class={classes}>
         <article>{content}</article>
         <div class="page-listing">
-          {options.showFolderCount && (
+          {options.showFolderCount && !isInHomeFolder && (
             <p>
               {i18n(cfg.locale).pages.folderContent.itemsUnderFolder({
                 count: allPagesInFolder.length,

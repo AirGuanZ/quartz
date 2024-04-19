@@ -106,13 +106,36 @@ export const ContentPage: QuartzEmitterPlugin<Partial<FullPageLayout>> = (userOp
           allFiles,
         }
 
-        const content = renderPage(cfg, slug, componentData, opts, externalResources)
-        const fp = await write({
-          ctx,
-          content,
-          slug,
-          ext: ".html",
-        })
+        let fp = null
+        let homeFolder = ctx.cfg.configuration.homeFolder
+        if (homeFolder.length > 0 && slug === "index") {
+          fp = await write({
+            ctx,
+            content: `
+              <!DOCTYPE html>
+              <html lang="en-us">
+              <head>
+              <title>Home</title>
+              <link rel="canonical" href="/${homeFolder}/index.html">
+              <meta name="robots" content="noindex">
+              <meta charset="utf-8">
+              <meta http-equiv="refresh" content="0; url=/${homeFolder}/index.html">
+              </head>
+              </html>
+              `,
+            slug,
+            ext: ".html",
+          })
+        }
+        else {
+          const content = renderPage(cfg, slug, componentData, opts, externalResources)
+          fp = await write({
+            ctx,
+            content,
+            slug,
+            ext: ".html",
+          })
+        }
 
         fps.push(fp)
       }
