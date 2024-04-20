@@ -118,7 +118,9 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
           crumbs.length = 0
         }
 
-        crumbs.push(crumb)
+        if (currentPath != "categories") {
+          crumbs.push(crumb)
+        }
       }
 
       // Add current file to crumb (can directly use frontmatter title)

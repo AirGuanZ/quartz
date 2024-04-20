@@ -72,8 +72,12 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options> | undefined> 
             const tags = coerceToArray(coalesceAliases(data, ["tags", "tag"]))
             if (tags) data.tags = [...new Set(tags.map((tag: string) => slugTag(tag)))]
 
+            const categories = coerceToArray(coalesceAliases(data, [ "categories", "category", "cat", "cats" ]))
+            if (categories) data.categories = [...new Set(categories.map((cat: string) => slugTag(cat)))]
+
             const aliases = coerceToArray(coalesceAliases(data, ["aliases", "alias"]))
             if (aliases) data.aliases = aliases
+
             const cssclasses = coerceToArray(coalesceAliases(data, ["cssclasses", "cssclass"]))
             if (cssclasses) data.cssclasses = cssclasses
 
@@ -100,6 +104,7 @@ declare module "vfile" {
         enableToc: string
         cssclasses: string[]
         date: string
+        categories: string[]
       }>
   }
 }

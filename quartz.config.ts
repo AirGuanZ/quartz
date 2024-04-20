@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Automorphism",
-    homeFolder: "blogs",
+    homeFolder: "articles",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -79,6 +79,7 @@ const config: QuartzConfig = {
       Plugin.ContentPage(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
+      Plugin.CategoryPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,

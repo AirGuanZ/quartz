@@ -25,7 +25,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer({
+    /*Component.DesktopOnly(Component.Explorer({
       sortFn: (a, b) => {
         if (a.file && b.file) {
           let dateA = a.file?.frontmatter?.date
@@ -55,7 +55,7 @@ export const defaultContentPageLayout: PageLayout = {
           return -1
         }
       },
-    })),
+    })),*/
   ],
   right: [
     //Component.Graph(),
@@ -72,7 +72,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer()),
+    //Component.DesktopOnly(Component.Explorer()),
   ],
   right: [],
 }
