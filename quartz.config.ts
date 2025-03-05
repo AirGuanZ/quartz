@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Automorphism",
-    homeFolder: "articles",
+    homeFolder: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {

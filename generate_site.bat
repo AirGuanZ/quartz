@@ -1,0 +1,1 @@
+npx quartz build --directory "C:/Users/AirGuanZ/OneDrive/Notes/_Public" --serve
